@@ -1,0 +1,232 @@
+If/elif/else statements
+if test1:
+statement 1
+elif test2:
+statement 2
+else:
+statement 3
+• Both the elif and else blocks are optional.
+
+
+purdue.edu/hla/sites/varalalab/wp-content/uploads/sites/20/2018/04/Lecture_11.pdf
+
+Applications of List, Set, Tuple, and Dictionary
+List:
+
+Used in JSON format
+Useful for Array operations
+Used in Databases
+Tuple:
+
+Used to insert records in the database through SQL query at a time.Ex: (1.’sravan’, 34).(2.’geek’, 35)
+Used in parentheses checker
+Set:
+
+Finding unique elements
+Join operations
+Dictionary:
+
+Used to create a data frame with lists
+Used in JSON
+
+functions:
+
+list()- converts the elements into a list
+
+a = [1,2,3,4,5,6]
+b = list(range(1,9))
+c = a+b
+print(c)
+O/P:
+[1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 7, 8]
+len()- returns the length of the variable
+
+a = [1,2,3,4,5,6]
+b = list(range(1,9))
+x = len(a)
+print(x)
+y = len(b)
+print(y)
+O/P:
+6
+8
+range()- creates a range between min and max
+
+a = [1,2,3,4,5,6]
+b = list(range(1,9))
+sum_a = sum(a)
+sum_b = sum(b)
+print('sum of two lists : {}'.format(sum_a+sum_b))
+O/P:
+sum of two lists : 57
+zip()- pairs two variables
+
+my_list_1 = [1, 2, 3]
+my_list_2 = [4, 5, 6]
+for i, j in zip(my_list_1, my_list_2):
+    print(i+j)
+O/P:
+5
+7
+9
+Using zip() to create our favorite dessert
+
+x = ['vanilla','strawberry','peach']
+y = [' sundae',' ice-cream',' smoothie']
+for i,j in zip(x,y):
+    print(i+j)
+O/P:
+vanilla sundae
+strawberry ice-cream
+peach smoothie
+
+
+def StudentDetail(name, rollno):
+    print('the rollno of the student {} is {}'.format(name, rollno))
+
+
+StudentDetail('sam', 1234)
+O / P:
+the
+rollno
+of
+the
+student
+sam is 1234
+
+
+Writing a function without lambda expression
+
+def my_func(x):
+    return x**2
+my_func(2)
+O/P:
+4
+Using lambda expression
+
+z = lambda x:x**2
+z(3)
+O/P:
+9
+In the above code, we’ve used the keyword lambda and on the right side of the : we specify the operation that it needs to do. The left side of the : specifies the argument.
+
+
+Credit: Analytics vidhya
+Using lambda to do simple addition
+
+sum = lambda a,b : a+b
+sum(1,2)
+O/P:
+3
+Filter
+A filter is a function that can be applied to a list that will return only the values that pass a certain condition.
+
+
+Credit: Real Python
+Printing the even and odd numbers using filter function
+
+even_and_odd = [1,2,3,4,5,6,7,8,9]
+only_even = list(filter((lambda x : (x%2 == 0)), even_and_odd))
+print(only_even)
+only_odd = list(filter((lambda y : (y%2 != 0)), even_and_odd))
+print(only_odd)
+O/P:
+[2, 4, 6, 8]
+[1, 3, 5, 7, 9]
+Let’s break the above code down,
+
+First, let’s write our lambda expression to get the even numbers
+
+(lambda x : (x%2 == 0)
+
+Take our lambda expression and apply it to the even_and_odd list using the filter function, so that we get only the even numbers
+
+(filter((lambda y : (y%2 != 0)), even_and_odd))
+Take the output and put them in a list
+
+list(filter((lambda x : (x%2 == 0)), even_and_odd))
+Voila !! we’ve written our filter function using the lambda expression, to find the even and odd numbers
+
+Printing numbers between 21 and 28 from a given list
+
+a = [23,45,67,88,12,25,24]
+between_21_28 = list(filter((lambda x: (x>=21 and x<=28)), a ))
+between_21_28
+O/P:
+[23, 25, 24]
+Some Practical examples using the above concepts
+Return the factorial of a number using function
+
+def fact(x):
+    if x == 0:
+        return 1
+    return x* fact(x-1)
+number = int(input('Enter an integer: '))
+print('the factorial of {} is {}'.format(number,fact(number)))
+O/P:
+Enter an integer: 6
+the factorial of 6 is 720
+Get two numbers from the user and perform addition and subtraction using lambda expressions
+
+a = int(input('enter first number: '))
+b = int(input('enter second number: '))
+sum = lambda x,y : a+b
+sub = lambda x,y : a-b
+print('Addition : {}, Subtraction = {}'.format(sum(a,b),sub(a,b)))
+O/P:
+enter first number: 23
+enter second number: 12
+Addition : 35, Subtraction = 11
+Printing the square of the numbers from a list using list comprehension
+
+original_list = range(2,9)
+print([ x**2 for x in original_list])
+O/P:
+[4, 9, 16, 25, 36, 49, 64]
+Printing the cube of numbers in a list using lambda expression and map function
+
+def cubed(x):
+    return(x*x*x)
+number = [2,3,4]
+cube_numbered = list(map(lambda x : cubed(x), number))
+print(cube_numbered)
+O/P:
+[8, 27, 64]
+Printing the even numbers within a range using lambda and filter function
+
+min = int(input("enter minimum value: "))
+max = int(input("enter maximum value: "))
+numbers = range(min,max)
+even_numbers = list(filter(lambda x: (x%2 == 0), numbers))
+print(even_numbers)
+O/P:
+enter minimum value: 23
+enter maximum value: 32
+[24, 26, 28, 30]
+Hope you’ve understood how to use some of python’s useful built-in functions and also create your own function to return the values. Using the lambda expression along with the map and filtershould be very easy once you practice with them.
+
+Note: If you are reading the blog in a smartphone, the codes may not be very presentable to you. If you can’t understand the code properly, read the blog in a PC/MAC
+
+Just reading the blog isn’t enough. Run the code by copy-pasting on an IDE. Change the variables for yourselves and see how the output changes. Finally, try to write your own code.
+
+Check out the previous chapter of the Quick Code-Python series.
+
+Python
+Python Programming
+Programming
+Lambda
+Machine Learning
+180
+
+
+
+
+Using lambda to do simple addition
+
+sum = lambda a,b : a+b
+sum(1,2)
+O/P:
+3
+
+lambda expression :
+medium.com/geekculture/functions-in-python-along-with-map-filter-and-lambda-expressions-794a6d99f926
